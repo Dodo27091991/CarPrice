@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg row" style="background-color: rgb(34, 27, 49); color: aliceblue;" >
+      
+      <div class="col-sm-4"></div>
+      <div class="container col-sm-4" > 
+          <b><h3>Check optimal price of your Car</h3></b> 
+      </div>
+      <div class="col-sm-4"></div>
+        
+    </nav>
+
+
+    <div class="container-fluid" style="border: black; background-color: rgb(52, 46, 131);color: aliceblue; height: 1100px;">
+    <div class="container" style="height: 900px; border: 1px solid;">
+      <div class="row">
+
+        <div class="col-sm-4 my-5"></div>
+        <div class="col-sm-4 my-5">
+
+      <form id="myForm">
+
+        <div class="form-group">
+         
+          <label for="Symbol">Symbol :</label>
+          <select class="form-control" id="Symbol">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+            <option>6</option>
+          </select>
+
+
+          <label for="Compressionration" id="cchange" class="my-1" >Compressionration : </label>
+          <input type="range" class="form-range" value=7 min="7" max="23" id="Compressionration">
+
+
+        <label for="Enginesize">Enginesize : (Value should be between 70 to 326)</label>
+        <input type="text" id="Enginesize" value=70 class="form-control" >
+        
+
+        <label for="Milage" id="mchange" class="my-1" >Milage : </label>
+          <input type="range" class="form-range" value=30 min="30" max="85" id="Milage">
+
+
+          <label for="Cylender" id="c1hange" class="my-1" >Cylender : </label>
+          <input type="range" class="form-range" value=2 min="2" max="12" id="Cylender">
+
+
+    <label for="Category">Car Category :</label>
+    <select class="form-control" id="Category" >
+      <option>Category C</option>
+      <option>Category B</option>
+      <option>Category A</option>
+      </select>
+
+  
+  <label for="Ftype">Fuel Type :</label>
+  <select class="form-control" id="Ftype" >
+    <option>Diesel</option>
+    <option>Gasoline</option>
+    </select>
+
+
+<label for="Fsystem">Fuel System :</label>
+<select class="form-control" id="Fsystem" >
+  <option>Fuel System 1BBL</option>
+  <option>Fuel System 2BBL</option>
+  <option>Fuel System 4BBL</option>
+  <option>Fuel System IDI</option>
+  <option>Fuel System MFI</option>
+  <option>Fuel System MPFI</option>
+  <option>Fuel System SPDI</option>
+  <option>Fuel System SPFI</option>
+  </select>
+
+
+<label for="Etype">Engine Type :</label>
+<select class="form-control" id="Etype" >
+  <option>Engine Type DOHC</option>
+  <option>Engine Type DOHCV</option>
+  <option>Engine Type L</option>
+  <option>Engine Type OHC</option>
+  <option>Engine Type OHCF</option>
+  <option>Engine Type OHCV</option>
+  <option>Engine Type Roter</option>
+  
+</select>
+
+
+<label for="Propulsion">Propulsion :</label>
+<select class="form-control" id="Propulsion" >
+  <option>Four Wheel</option>
+  <option>Front Wheel</option>
+  <option>Rear Wheel</option>
+  
+  </select>
+
+
+
+
+<label for="Cbody">Car Body :</label>
+<select class="form-control" id="Cbody" >
+  <option>Convertable</option>
+  <option>Hard Top</option>
+  <option>Hatch Back</option>
+  <option>Sedan</option>
+  <option>Wagon</option>
+  
+</select>
+
+
+
+<label for="Aspiration">Aspiration :</label>
+<select class="form-control" id="Aspiration" >
+  <option>Standard</option>
+  <option>Turbo</option>
+  
+</select>
+
+<button type="submit" class="btn btn-outline-light my-3">Secondary</button>
+
+</form>
+</div>
+
+<div class="col-sm-4"> </div>
+</div>
+<h3 id="pcprice" style="text-align: center;">Optimal price of your Car is :</h3>
+
+</div>
+</body>
+    
+      
+
+
+<script>
+
+    document.getElementById('myForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var symboling =0;
+      var compressionratio =0;
+      var enginesize =0;
+      var milage =0;
+      var cyliender_No =0;
+      var category_0 =0;
+      var category_1 =0;
+      var category_2 =0;
+      var fueltype_diesel =0 ;
+      var fueltype_gas =0 ;
+      var fuelsystem_1bbl =0; 
+      var fuelsystem_2bbl =0;
+      var fuelsystem_4bbl =0;
+      var fuelsystem_idi =0;
+      var fuelsystem_mfi =0;
+      var fuelsystem_mpfi =0;
+      var fuelsystem_spdi =0;
+      var fuelsystem_spfi =0;
+      var enginetype_dohc =0;
+      var enginetype_dohcv =0;
+      var enginetype_l =0;
+      var enginetype_ohc =0;
+      var enginetype_ohcf =0;
+      var enginetype_ohcv =0;
+      var enginetype_rotor =0;
+      var drivewheel_4wd =0;
+      var drivewheel_fwd =0;
+      var drivewheel_rwd =0;
+      var carbody_convertible =0;
+      var carbody_hardtop =0;
+      var carbody_hatchback =0;
+      var carbody_sedan =0;
+      var carbody_wagon =0;
+      var aspiration_std =0;
+      var aspiration_turbo =0;
+
+
+      var symboling = document.getElementById('Symbol').value;
+      var compressionratio = document.getElementById('Compressionration').value;
+      var enginesize = document.getElementById('Enginesize').value;
+      var milage = document.getElementById('Milage').value;
+      var cyliender_No = document.getElementById('Cylender').value;
+      var Category = document.getElementById('Category').value;
+      var Ftype = document.getElementById('Ftype').value;
+      var Fsystem = document.getElementById('Fsystem').value;
+      var Etype = document.getElementById('Etype').value;
+      var Propulsion = document.getElementById('Propulsion').value;
+      var Cbody = document.getElementById('Cbody').value;
+      var Aspiration = document.getElementById('Aspiration').value;
+
+
+      if (Category === 'Category C') {
+      category_0 =1;
+      category_1 =0;
+      category_2 =0;        
+      }
+      if (Category === 'Category B') {
+      category_0 =0;
+      category_1 =1;
+      category_2 =0;        
+      }
+      if (Category === 'Category C') {
+      category_0 =0;
+      category_1 =0;
+      category_2 =1;        
+      }
+
+
+      if (Ftype === 'Diesel') {
+      fueltype_diesel =1;
+      fueltype_gas =0;
+      }
+      if (Ftype === 'Gasoline') {
+      fueltype_diesel =0;
+      fueltype_gas =1;
+      }
+
+      if (Fsystem ==='Fuel System 1BBL') {
+      fuelsystem_1bbl =1; 
+      fuelsystem_2bbl =0;
+      fuelsystem_4bbl =0;
+      fuelsystem_idi =0;
+      fuelsystem_mfi =0;
+      fuelsystem_mpfi =0;
+      fuelsystem_spdi =0;
+      fuelsystem_spfi =0;
+      }
+      if (Fsystem ==='Fuel System 2BBL'){
+      fuelsystem_1bbl =0; 
+      fuelsystem_2bbl =1;
+      fuelsystem_4bbl =0;
+      fuelsystem_idi =0;
+      fuelsystem_mfi =0;
+      fuelsystem_mpfi =0;
+      fuelsystem_spdi =0;
+      fuelsystem_spfi =0;
+      }
+      if (Fsystem ==='Fuel System 4BBL'){
+      fuelsystem_1bbl =0; 
+      fuelsystem_2bbl =0;
+      fuelsystem_4bbl =1;
+      fuelsystem_idi =0;
+      fuelsystem_mfi =0;
+      fuelsystem_mpfi =0;
+      fuelsystem_spdi =0;
+      fuelsystem_spfi =0;
+      }
+      if (Fsystem ==='Fuel System IDI'){
+      fuelsystem_1bbl =0; 
+      fuelsystem_2bbl =0;
+      fuelsystem_4bbl =0;
+      fuelsystem_idi =1;
+      fuelsystem_mfi =0;
+      fuelsystem_mpfi =0;
+      fuelsystem_spdi =0;
+      fuelsystem_spfi =0;
+      }
+      if (Fsystem ==='Fuel System MFI'){
+      fuelsystem_1bbl =0; 
+      fuelsystem_2bbl =0;
+      fuelsystem_4bbl =0;
+      fuelsystem_idi =0;
+      fuelsystem_mfi =1;
+      fuelsystem_mpfi =0;
+      fuelsystem_spdi =0;
+      fuelsystem_spfi =0;
+      }
+      if (Fsystem ==='Fuel System MPFI'){
+      fuelsystem_1bbl =0; 
+      fuelsystem_2bbl =0;
+      fuelsystem_4bbl =0;
+      fuelsystem_idi =0;
+      fuelsystem_mfi =0;
+      fuelsystem_mpfi =1;
+      fuelsystem_spdi =0;
+      fuelsystem_spfi =0;
+      }
+      if (Fsystem ==='Fuel System SPDI'){
+      fuelsystem_1bbl =0; 
+      fuelsystem_2bbl =0;
+      fuelsystem_4bbl =0;
+      fuelsystem_idi =0;
+      fuelsystem_mfi =0;
+      fuelsystem_mpfi =0;
+      fuelsystem_spdi =1;
+      fuelsystem_spfi =0;
+      }
+      if (Fsystem ==='Fuel System SPFI'){
+      fuelsystem_1bbl =0; 
+      fuelsystem_2bbl =0;
+      fuelsystem_4bbl =0;
+      fuelsystem_idi =0;
+      fuelsystem_mfi =0;
+      fuelsystem_mpfi =0;
+      fuelsystem_spdi =0;
+      fuelsystem_spfi =1;
+      }
+
+      if (Etype ==='Engine Type DOHC'){
+      enginetype_dohc =1;
+      enginetype_dohcv =0;
+      enginetype_l =0;
+      enginetype_ohc =0;
+      enginetype_ohcf =0;
+      enginetype_ohcv =0;
+      enginetype_rotor =0;
+      }
+      if (Etype ==='Engine Type DOHCV'){
+      enginetype_dohc =0;
+      enginetype_dohcv =1;
+      enginetype_l =0;
+      enginetype_ohc =0;
+      enginetype_ohcf =0;
+      enginetype_ohcv =0;
+      enginetype_rotor =0;
+      }
+      if (Etype ==='Engine Type L'){
+      enginetype_dohc =0;
+      enginetype_dohcv =0;
+      enginetype_l =1;
+      enginetype_ohc =0;
+      enginetype_ohcf =0;
+      enginetype_ohcv =0;
+      enginetype_rotor =0;
+      }
+      if (Etype ==='Engine Type OHC'){
+      enginetype_dohc =0;
+      enginetype_dohcv =0;
+      enginetype_l =0;
+      enginetype_ohc =1;
+      enginetype_ohcf =0;
+      enginetype_ohcv =0;
+      enginetype_rotor =0;
+      }
+      if (Etype ==='Engine Type OHCF'){
+      enginetype_dohc =0;
+      enginetype_dohcv =0;
+      enginetype_l =0;
+      enginetype_ohc =0;
+      enginetype_ohcf =1;
+      enginetype_ohcv =0;
+      enginetype_rotor =0;
+      }
+      if (Etype ==='Engine Type OHCV'){
+      enginetype_dohc =0;
+      enginetype_dohcv =0;
+      enginetype_l =0;
+      enginetype_ohc =0;
+      enginetype_ohcf =0;
+      enginetype_ohcv =1;
+      enginetype_rotor =0;
+      }
+      if (Etype ==='Engine Type Rotor'){
+      enginetype_dohc =0;
+      enginetype_dohcv =0;
+      enginetype_l =0;
+      enginetype_ohc =0;
+      enginetype_ohcf =0;
+      enginetype_ohcv =0;
+      enginetype_rotor =1;
+      }
+
+      if (Propulsion ==='Four Wheel'){
+      drivewheel_4wd =1;
+      drivewheel_fwd =0;
+      drivewheel_rwd =0;
+      }
+      if (Propulsion ==='Front Wheel'){
+      drivewheel_4wd =0;
+      drivewheel_fwd =1;
+      drivewheel_rwd =0;
+      }
+      if (Propulsion ==='Rear Wheel'){
+      drivewheel_4wd =0;
+      drivewheel_fwd =0;
+      drivewheel_rwd =1;
+      }
+
+      if ( Cbody ==='Convertable'){
+      carbody_convertible =1;
+      carbody_hardtop =0;
+      carbody_hatchback =0;
+      carbody_sedan =0;
+      carbody_wagon =0;
+      }
+      if ( Cbody ==='Hardtop'){
+      carbody_convertible =0;
+      carbody_hardtop =1;
+      carbody_hatchback =0;
+      carbody_sedan =0;
+      carbody_wagon =0;
+      }
+      if ( Cbody ==='Hatchback'){
+      carbody_convertible =0;
+      carbody_hardtop =0;
+      carbody_hatchback =1;
+      carbody_sedan =0;
+      carbody_wagon =0;
+      }
+      if ( Cbody ==='Sedan'){
+      carbody_convertible =0;
+      carbody_hardtop =0;
+      carbody_hatchback =0;
+      carbody_sedan =1;
+      carbody_wagon =0;
+      }
+      if ( Cbody ==='Wagon'){
+      carbody_convertible =0;
+      carbody_hardtop =0;
+      carbody_hatchback =0;
+      carbody_sedan =0;
+      carbody_wagon =1;
+      }
+
+      if ( Aspiration ==='Standard'){
+      aspiration_std =1;
+      aspiration_turbo =0;
+      }
+      if ( Aspiration ==='Turbo'){
+      aspiration_std =1;
+      aspiration_turbo =0;
+      }
+
+      
+      
+
+      //symboling,compressionratio,enginesize,milage,cyliender_No,category_0,category_1,category_2,fueltype_diesel,fueltype_gas,fuelsystem_1bbl,fuelsystem_2bbl,fuelsystem_4bbl,fuelsystem_idi,fuelsystem_mfi,fuelsystem_mpfi,fuelsystem_spdi,fuelsystem_spfi,enginetype_dohc,enginetype_dohcv,enginetype_l,enginetype_ohc,enginetype_ohcf,enginetype_ohcv,enginetype_rotor,drivewheel_4wd,drivewheel_fwd,drivewheel_rwd,carbody_convertible,carbody_hardtop,carbody_hatchback,carbody_sedan,carbody_wagon,aspiration_std,aspiration_turbo
+      
+      console.log("******************")
+      console.log(symboling,compressionratio,enginesize,milage,cyliender_No,category_0,category_1,category_2,fueltype_diesel,fueltype_gas,fuelsystem_1bbl,fuelsystem_2bbl,fuelsystem_4bbl,fuelsystem_idi,fuelsystem_mfi,fuelsystem_mpfi,fuelsystem_spdi,fuelsystem_spfi,enginetype_dohc,enginetype_dohcv,enginetype_l,enginetype_ohc,enginetype_ohcf,enginetype_ohcv,enginetype_rotor,drivewheel_4wd,drivewheel_fwd,drivewheel_rwd,carbody_convertible,carbody_hardtop,carbody_hatchback,carbody_sedan,carbody_wagon,aspiration_std,aspiration_turbo)
+      console.log("******************")
+
+      var requestBody = {
+      symboling : symboling,
+      compressionratio : compressionratio,
+      enginesize : enginesize,
+      milage : milage,
+      cyliender_No :cyliender_No,
+      category_0 : category_0,
+      category_1 : category_1,
+      category_2 : category_2,
+      fueltype_diesel : fueltype_diesel,
+      fueltype_gas : fueltype_gas,
+      fuelsystem_1bbl : fuelsystem_1bbl,
+      fuelsystem_2bbl : fuelsystem_2bbl,
+      fuelsystem_4bbl : fuelsystem_4bbl,
+      fuelsystem_idi : fuelsystem_idi,
+      fuelsystem_mfi : fuelsystem_mfi,
+      fuelsystem_mpfi : fuelsystem_mpfi,
+      fuelsystem_spdi : fuelsystem_spdi,
+      fuelsystem_spfi : fuelsystem_spfi,
+      enginetype_dohc :enginetype_dohc,
+      enginetype_dohcv : enginetype_dohcv,
+      enginetype_l : enginetype_l, 
+      enginetype_ohc : enginetype_ohc,
+      enginetype_ohcf : enginetype_ohcf,
+      enginetype_ohcv : enginetype_ohcv,
+      enginetype_rotor : enginetype_rotor,
+      drivewheel_4wd : drivewheel_4wd,
+      drivewheel_fwd : drivewheel_fwd,
+      drivewheel_rwd : drivewheel_rwd,
+      carbody_convertible : carbody_convertible,
+      carbody_hardtop : carbody_hardtop,
+      carbody_hatchback : carbody_hatchback,
+      carbody_sedan : carbody_sedan,
+      carbody_wagon : carbody_wagon,
+      aspiration_std : aspiration_std,
+      aspiration_turbo : aspiration_turbo
+      }; 
+      var url='http://127.0.0.1:5000/predict/'+symboling+","+compressionratio+","+enginesize+","+milage+","+cyliender_No+","+category_0+","+category_1+","+category_2+","+fueltype_diesel+","+fueltype_gas+","+fuelsystem_1bbl+","+fuelsystem_2bbl+","+fuelsystem_4bbl+","+fuelsystem_idi+","+fuelsystem_mfi+","+fuelsystem_mpfi+","+fuelsystem_spdi+","+fuelsystem_spfi+","+enginetype_dohc+","+enginetype_dohcv+","+enginetype_l+","+enginetype_ohc+","+enginetype_ohcf+","+enginetype_ohcv+","+enginetype_rotor+","+drivewheel_4wd+","+drivewheel_fwd+","+drivewheel_rwd+","+carbody_convertible+","+carbody_hardtop+","+carbody_hatchback+","+carbody_sedan+","+carbody_wagon+","+aspiration_std+","+aspiration_turbo
+
+      
+      // Make the API call
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          // Handle the API response
+          var label = data.label; // Assuming the API response contains a 'label' property
+          document.getElementById('pcprice').innerHTML ="Predicted price of your Car is : $"+ data['msg'];
+
+          console.log(data['msg']);
+        })
+        .catch(error => {
+          // Handle any errors that occur during the API call
+          console.log("Error in api response");
+          console.error('Error:', error);
+        });
+    });
+
+</script>
+
+<script>
+
+  document.getElementById('Compressionration').addEventListener('change',function(e){
+    document.getElementById('cchange').innerHTML="Compressionration : "+document.getElementById('Compressionration').value
+    })
+
+    document.getElementById('Milage').addEventListener('change',function(e){
+    document.getElementById('mchange').innerHTML="Milage : "+document.getElementById('Milage').value
+    })
+
+    document.getElementById('Cylender').addEventListener('change',function(e){
+    document.getElementById('c1hange').innerHTML="Cylender : "+document.getElementById('Cylender').value
+    })
+
+
+</script>
+
+      
+      
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>       
+</body>
+
+
+</html>
